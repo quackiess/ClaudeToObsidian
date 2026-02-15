@@ -25,7 +25,7 @@ Example: chat about cellular respiration and photosynthesis, the output would sh
 
 1. Clone the repo
    ```
-   git clone https://github.com/your-username/claude-archive.git
+   git clone https://github.com/quackiess/claude-archive.git
    cd claude-archive
    ```
 2. Install dependencies
