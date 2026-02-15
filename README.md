@@ -1,4 +1,4 @@
-**Scroll to the bottom for instructions**
+**Visualize patterns in your thinking.**
 
 ClaudeArchive exports your Claude.ai conversations into an Obsidian vault with automatic hyperlinks, building a searchable map of your AI-assisted thinking over time. You will be able to see patterns within and across chats. The app also offers chat management features like deletion and customizable export settings. Each export will output a report with chat summaries and keyword frequencies. **Use with caution.**
 
