@@ -1,4 +1,5 @@
 The interface is straightforward - just check the readme for setup instructions and how to grab your session key from DevTools.
+
 Example: chat about cellular respiration and photosynthesis, the output would show connecting links between related keywords that show up in both conversations. You can adjust how many keywords it tracks to control the length and detail of the connections.
 
 <img width="1064" height="617" alt="Screenshot 2026-02-15 at 12 04 12 PM" src="https://github.com/user-attachments/assets/d1363816-2d44-43d8-95d8-3f37561f216f" />
