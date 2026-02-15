@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClaudeArchive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo">Claude<span>Archive</span></div>
+      <div class="divider-v"></div>
+      <div id="statusBadge" class="conn-status">
+        <span class="conn-dot"></span>
+        <span class="conn-label">Disconnected</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="stat-pill">
+        <span class="stat-label">Library</span>
+        <span class="stat-value" id="chatCount">0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Selected</span>
+        <span class="stat-value" id="selectedCount">0</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-label">Exported</span>
+        <span class="stat-value" id="exportedCount">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="workspace">
+
+    <!-- LEFT PANEL — Chat Library -->
+    <section class="panel panel-left">
+      <div class="panel-header">
+        <h2 class="panel-title">Library</h2>
+        <div class="panel-actions">
+          <button id="btnSelectAll" class="icon-btn" title="Select All">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 8l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button id="btnDeselectAll" class="icon-btn" title="Deselect All">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <button id="btnRefresh" class="icon-btn" title="Refresh">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8a6 6 0 0110.5-4M14 8a6 6 0 01-10.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M13 1v4h-4M3 15v-4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="text" id="chatSearch" placeholder="Filter conversations...">
+      </div>
+
+      <div id="chatList" class="chat-list">
+        <div class="empty-state">
+          <div class="empty-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <p>Connect your account to load conversations</p>
+        </div>
+      </div>
+
+      <!-- Export actions pinned to bottom -->
+      <div class="panel-footer">
+        <div id="exportProgress" class="export-progress" style="display:none;">
+          <div class="progress-track"><div class="progress-fill" id="exportFill"></div></div>
+          <span class="progress-label" id="exportStatus">Exporting...</span>
+        </div>
+        <div id="exportResult"></div>
+        <div class="export-actions">
+          <button id="btnExport" class="btn btn-export" disabled>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 6l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12v2h12v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Export
+          </button>
+          <button id="btnExportDelete" class="btn btn-export-delete" disabled>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 6l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12v2h12v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Export & Delete
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL — Controls -->
+    <section class="panel panel-right">
+
+      <!-- Connection -->
+      <div class="control-section">
+        <div class="section-header">
+          <h3>Connection</h3>
+          <div id="connIndicator" class="conn-indicator off"></div>
+        </div>
+        <div class="field">
+          <label for="sessionKey">Session Key</label>
+          <textarea id="sessionKey" rows="2" placeholder="Paste sessionKey cookie..."></textarea>
+          <span class="field-hint">DevTools &rarr; Application &rarr; Cookies &rarr; sessionKey</span>
+        </div>
+        <div class="btn-row">
+          <button id="btnTestConnection" class="btn btn-connect">Connect</button>
+          <button id="btnClearSession" class="btn btn-ghost">Clear</button>
+        </div>
+        <div id="setupMessage"></div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- Link Coverage -->
+      <div class="control-section">
+        <div class="section-header">
+          <h3>Link Coverage</h3>
+        </div>
+        <div class="field">
+          <div class="slider-header">
+            <label>Top words linked</label>
+            <span class="slider-value"><strong id="linkPercentValue">15</strong>%</span>
+          </div>
+          <input type="range" id="linkPercent" class="range-slider" value="15" min="5" max="40" step="1">
+          <span class="field-hint">Top N% of meaningful words become Obsidian [[links]]. Cross-chat terms linked automatically.</span>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- Vault -->
+      <div class="control-section">
+        <div class="section-header">
+          <h3>Vault</h3>
+        </div>
+        <div class="field">
+          <label for="vaultPath">Export path</label>
+          <input type="text" id="vaultPath" placeholder="~/Documents/ClaudeArchive">
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <!-- Stop Words -->
+      <div class="control-section">
+        <div class="section-header">
+          <h3>Stop Words</h3>
+        </div>
+        <div class="field">
+          <label for="customStopWords">Additional exclusions</label>
+          <input type="text" id="customStopWords" placeholder="claude, assistant, user">
+          <span class="field-hint">Comma-separated. These words won't become [[links]].</span>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <div class="control-section">
+        <button id="btnSaveSettings" class="btn btn-save">Save Settings</button>
+        <div id="settingsMessage"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

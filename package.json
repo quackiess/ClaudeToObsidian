@@ -1,0 +1,12 @@
+{
+  "name": "claude-archive",
+  "version": "1.0.0",
+  "description": "Export Claude.ai chats to an Obsidian vault with word frequency analysis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
