@@ -12,8 +12,6 @@ Example: chat about cellular respiration and photosynthesis, the output would sh
 
 # ClaudeArchive
 
-Export your Claude.ai chats to an Obsidian vault with word frequency analysis and cross-chat linking.
-
 ## Features
 
 - Connect to Claude.ai using your session key
