@@ -4,10 +4,8 @@ ClaudeArchive exports your Claude.ai conversations into an Obsidian vault with a
 
 Known bug: a bit aggressive with converting plurals into singulars. The stop word database is also being expanded.
 
-Example: chat about cellular respiration and photosynthesis, the output would show connecting links between related keywords that show up in both conversations. You can adjust how many keywords it tracks to control the length and detail of the connections. These are only two chats; with more, you will be able to build a much bigger web!
-
 <img width="1112" height="623" alt="Screenshot 2026-02-15 at 12 28 02 PM" src="https://github.com/user-attachments/assets/d9860c1f-b5c5-4a4b-93ae-1694e6e940bb" />
-<img width="1490" height="900" alt="Screenshot 2026-02-15 at 12 40 56 PM" src="https://github.com/user-attachments/assets/5aed0ba3-85fa-40d6-b9f6-9c4bef56aadb" />
+<img width="926" height="838" alt="Screenshot 2026-02-18 at 11 47 23 PM" src="https://github.com/user-attachments/assets/6fcf08cf-6634-4a6b-9778-a221f9ca6d4a" />
 <img width="729" height="499" alt="Screenshot 2026-02-15 at 12 47 46 PM" src="https://github.com/user-attachments/assets/be505157-1e4e-413f-80d9-642c9b377f02" />
 
 # ClaudeArchive
