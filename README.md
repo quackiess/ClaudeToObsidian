@@ -12,6 +12,8 @@ App interface
 
 Graph of 20+ chats, each frequent keyword is a node, bigger nodes mean more connections. Blue = chat, Red = export report
 
+<img width="733" height="734" alt="Screenshot 2026-02-23 at 3 54 00 PM" src="https://github.com/user-attachments/assets/82a2443a-36fd-4b36-af7c-c46a70c81333" />
+
 <img width="834" height="582" alt="Screenshot 2026-02-18 at 11 52 49 PM" src="https://github.com/user-attachments/assets/66ce23fc-309d-451d-ba02-df694f09410e" />
 
 Focus on one keyword, showing connections to chats mentioned in
